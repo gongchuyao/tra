@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sstm.local/schema/transition/v0.1",
+  "title": "SSTM transition",
+  "type": "object",
+  "required": ["schema_version", "sample_id", "project_id", "trajectory_id", "step_index", "state_before", "goal", "allowed_actions", "candidate_delta", "feedback", "repair_delta", "state_after", "provenance", "epistemic_tier", "quality", "license", "source_refs"],
+  "properties": {
+    "schema_version": {"const": "sstm.transition.v0.1"},
+    "sample_id": {"type": "string", "minLength": 1},
+    "project_id": {"type": "string", "minLength": 1},
+    "trajectory_id": {"type": "string", "minLength": 1},
+    "step_index": {"type": "integer", "minimum": 0},
+    "state_before": {"type": "object"},
+    "goal": {"type": "object", "required": ["kind", "statement"]},
+    "allowed_actions": {"type": "array", "items": {"type": "string"}},
+    "candidate_delta": {"type": "object", "required": ["operation", "authority", "payload"]},
+    "feedback": {"type": "object", "required": ["authority", "result", "code", "details"], "properties": {"result": {"enum": ["ACCEPT", "REJECT", "OPEN", "ERROR", "INCONCLUSIVE"]}}},
+    "repair_delta": {"type": ["object", "null"]},
+    "state_after": {"type": "object"},
+    "provenance": {
+      "type": "object",
+      "required": ["source_id", "source_path", "source_checksum", "transformed_checksum", "transformer", "transformer_version", "machine_verified", "human_approved"],
+      "properties": {
+        "source_id": {"type": "string", "minLength": 1},
+        "source_path": {"type": ["string", "null"]},
+        "source_checksum": {"type": "string", "pattern": "^[a-fA-F0-9]{64}$"},
+        "transformed_checksum": {"type": "string", "pattern": "^[a-fA-F0-9]{64}$"},
+        "transformer": {"type": "string", "minLength": 1},
+        "transformer_version": {"type": "string", "minLength": 1},
+        "machine_verified": {"type": "boolean"},
+        "human_approved": {"type": "boolean"}
+      }
+    },
+    "epistemic_tier": {"enum": ["MACHINE_GROUND_TRUTH", "EXECUTED_OBSERVATION", "HUMAN_APPROVED", "MODEL_PROPOSED", "UNVERIFIED", "REJECTED_INVALIDATED_SUPERSEDED"]},
+    "quality": {"type": "object", "required": ["machine_verified", "executed", "provenance_complete", "human_approved", "reconstruction_confidence", "license_clear", "overall_quality", "grade"]},
+    "license": {"type": "object", "required": ["status", "redistribution_allowed"]},
+    "source_refs": {"type": "array", "minItems": 1, "items": {"type": "string"}}
+  },
+  "additionalProperties": true
+}
+

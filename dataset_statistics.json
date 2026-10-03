@@ -1,0 +1,44 @@
+{
+  "action_distribution": {
+    "APPLY_RULE": 1000,
+    "COMPARE_HYPOTHESES": 1000,
+    "OPEN_OBLIGATION": 1000,
+    "REGISTER_EVIDENCE": 1020,
+    "REPAIR_SCOPE": 1000,
+    "REPLACE_REFERENCE": 1000,
+    "REQUEST_EXPERIMENT": 1000
+  },
+  "average_state_size": 0.997151,
+  "average_trajectory_length": 1.0,
+  "epistemic_tier_distribution": {
+    "MACHINE_GROUND_TRUTH": 3500,
+    "REJECTED_INVALIDATED_SUPERSEDED": 3500,
+    "UNVERIFIED": 20
+  },
+  "feedback_distribution": {
+    "ACCEPT": 3520,
+    "REJECT": 3500
+  },
+  "license_distribution": {
+    "OPEN": 20,
+    "OWNED": 7000
+  },
+  "quality_distribution": {
+    "BRONZE": 20,
+    "GOLD": 7000
+  },
+  "source_distribution": {
+    "literature": 20,
+    "synthetic-adversarial": 1000,
+    "synthetic-causal": 1000,
+    "synthetic-conflict": 1000,
+    "synthetic-deduction": 1000,
+    "synthetic-hypothesis": 1000,
+    "synthetic-provenance": 1000,
+    "synthetic-revision": 1000
+  },
+  "token_estimate": 2967001,
+  "total_trajectories": 7020,
+  "total_transitions": 7020,
+  "unknown_provenance_count": 0
+}
